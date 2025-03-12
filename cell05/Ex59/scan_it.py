@@ -1,15 +1,12 @@
-import sys
+import re
 
-if len(sys.argv) != 3:
-    print('none')
+text = input('Put word here: ')
+patt = input('Search: ')
+
+pattern = rf'\b{re.escape(patt)}\b'
+res = re.findall(pattern, text, re.IGNORECASE)
+
+if len(res) > 0:
+    print(len(res)) 
 else:
-    keyword = sys.argv[1]
-    string = sys.argv[2]
-    
-
-    count = string.count(keyword)
-
-    if count > 0:
-        print(count)
-    else:
-        print('none')
+    print('None') 
